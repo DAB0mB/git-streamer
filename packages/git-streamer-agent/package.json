@@ -1,0 +1,33 @@
+{
+  "name": "@git-streamer/agent",
+  "version": "0.0.0-alpha.0",
+  "main": "build/index.js",
+  "private": true,
+  "scripts": {
+    "prepublishOnly": "rm -rf build && yarn build",
+    "build": "babel src --extensions .js --out-dir build --verbose --copy-files",
+    "lint": "eslint --fix"
+  },
+  "dependencies": {
+    "chokidar": "^3.4.2",
+    "combine-errors": "^3.0.3",
+    "dotenv": "^8.2.0",
+    "fs-extra": "^9.0.1",
+    "generic-utils": "^0.1.0",
+    "ignore": "^5.1.8",
+    "nanoid": "^3.1.20",
+    "node-fetch": "^2.6.1",
+    "socket.io-client": "^3.0.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.4",
+    "@babel/node": "^7.10.5",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.10.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.7.2"
+  }
+}
