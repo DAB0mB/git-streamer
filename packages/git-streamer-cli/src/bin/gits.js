@@ -107,7 +107,7 @@ const main = async () => {
         console.log('Checking for updates...');
       }, 2000);
 
-      const latestVersion = await execa('npm', ['show', 'version', '@git-streamer/agent'])
+      const latestVersion = await execa('npm', ['show', '@git-streamer/agent', 'version'])
         .then(cp => cp.stdout.split('\n')[0].trim());
 
       clearTimeout(checkingUpdatesTimeout);
@@ -191,7 +191,7 @@ const main = async () => {
 
     if (stopWatching) try {
       const stopWatchingTimeout = setTimeout(() => {
-        console.log('Gracefully closing session; just a moment please.');
+        console.log('Gracefully shutting down; just a moment please.');
       }, 1000);
 
       await stopWatching();
