@@ -222,15 +222,22 @@ class Git extends Cmd {
     });
 
     if (allowWrite) {
-      sock.on('writefile', (file, contents) => {
+      sock.on('writefile', async (file, contents) => {
         const writePath = path.resolve(projectDir, file);
+        let hasPath;
 
-        // Prevent unwanted injections
-        if (/^\./.test(path.relative(projectDir, writePath))) {
-          return;
+        try {
+          hasPath = !!(await this.execa(['ls-files', '--', writePath]));
+        }
+        catch (e) {
+          // fatal: path is outside repository
+          hasPath = false;
         }
 
-        fs.writeFile(writePath, contents.toString());
+        // Prevent unwanted injections
+        if (hasPath) {
+          fs.writeFile(writePath, contents.toString());
+        }
       });
     }
 
