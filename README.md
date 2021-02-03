@@ -1,11 +1,11 @@
 # Git Streamer
 
-With Git Streamer you can start a video call, and share your screen / git project simultaneously. Every change that you make in your project, will be reflected live in the hosted text editor.
+Using a single command line you can start a new video call, and share your screen along with your code. Every change that you make in your project will be reflected live in the hosted text editor, so participants can easily collaborate with you and submit their changes as well. Git Streamer was designed to be extremely easy and efficient, specially built for programmers, for the purpose of being able to share more frequently, and/or working remotely.
 
 <img align="center" alt="git-vide" src="https://user-images.githubusercontent.com/7648874/106060751-1f1e3d80-60fd-11eb-8a23-c418928ee157.png">
 <img align="center" alt="git-code" src="https://user-images.githubusercontent.com/7648874/106059610-a36fc100-60fb-11eb-819e-e269b4b76aa7.png">
 
-To further understand how Git Streamer works I recommend you to read: [An architectural overview for Web RTC: A protocol for implementing video conferencing](https://bit.ly/3rjvuSR).
+To further understand how Git Streamer works I recommend you to read about [Web RTC - A protocol for implementing video conferencing](https://bit.ly/3rjvuSR).
 
 ## Getting Started
 
@@ -15,19 +15,13 @@ To get started, install `gits` CLI:
 
 And create a new session:
 
-    $ gits --copy --open --salt 100
+    $ gits
 
-- **`--copy`** - copy the session URL to the clipboard so you can start sharing immediately.
-- **`--open`** - open the session URL in the browser.
-- **`--salt 100`** - create an extra secure session with a very long ID.
+Once the session has been created, the browser will open, and the session URL will be copied to your clipboard so you can start sharing it with your colleagues. Git Streamer will also lookup for new updates, and if it detected any, it will update itself automatically.
 
-You can also use the **`--allow-write`** option, which will give the participants the ability to edit your local files directly from the web editor.
+For further help and launch options, type:
 
-The CLI will update itself automatically with each run. You can use the **`--no-update`** option to disable that behavior, although not recommended.
-
-Alternatively, you can use the **`--force-update`** option, if for any reason, you would like to address the NPM registry regardless of your installed version.
-
-For help, use the **`--help`** option.
+    $ gits --help
 
 ## Security
 
