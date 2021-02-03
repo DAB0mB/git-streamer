@@ -1,7 +1,6 @@
 {
   "name": "@git-streamer/cli",
   "version": "0.0.0-alpha.0",
-  "private": true,
   "bin": {
     "gits": "build/bin/gits.js"
   },
@@ -30,5 +29,8 @@
     "@babel/preset-env": "^7.11.0",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.7.2"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

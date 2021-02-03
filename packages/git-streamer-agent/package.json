@@ -2,7 +2,6 @@
   "name": "@git-streamer/agent",
   "version": "0.0.0-alpha.0",
   "main": "build/index.js",
-  "private": true,
   "scripts": {
     "prepublishOnly": "rm -rf build && yarn build",
     "build": "babel src --extensions .js --out-dir build --verbose --copy-files",
@@ -29,5 +28,8 @@
     "@babel/preset-env": "^7.11.0",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.7.2"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
