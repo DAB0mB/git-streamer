@@ -13,10 +13,13 @@ import readline from 'readline';
 
 import pack from '../../package.json';
 import { isProd } from '../config';
-import { txt, nullStdout, aliasArgv } from '../util';
+import help from '../help';
+import { nullStdout, aliasArgv } from '../util';
 
 // minimist doesn't support dash cased args
 const argv = aliasArgv(process.argv.slice(2), {
+  '--noopen': ['--no-open'],
+  '--nocopy': ['--no-copy'],
   '--noupdate': ['--no-update'],
   '--forceupdate': ['--force-update'],
   '--allowwrite': ['--allow-write'],
@@ -24,10 +27,10 @@ const argv = aliasArgv(process.argv.slice(2), {
 
 let {
   _: [input],
-  copy: shouldCopy = false,
-  open: shouldOpen = false,
-  salt: saltSize = 0,
-  help = false,
+  copy: noCopy = false,
+  open: noOpen = false,
+  salt: saltSize = 89,
+  help: showHelp = false,
   allowwrite: allowWrite = false,
   noupdate: noUpdate = false,
   forceupdate: forceUpdate = false,
@@ -36,14 +39,11 @@ let {
 } = minimist(argv, {
   string: ['config'],
   number: ['salt'],
-  boolean: ['allowwrite', 'noupdate', 'forceupdate', 'copy', 'help'],
+  boolean: ['allowwrite', 'nocopy', 'noopen', 'noupdate', 'forceupdate', 'help'],
 });
 
-if (help) {
-  console.log(txt`
-    usage: gits [path] [--version] [--help] [--config <path>] [--salt <size>]
-                [--copy] [--open] [--no-update] [--force-update] [--allow-write]
-  `);
+if (showHelp) {
+  console.log(help());
 
   process.exit(0);
 }
@@ -73,8 +73,8 @@ const main = async () => {
   const configBase = {
     input,
     saltSize,
-    open: shouldOpen,
-    copy: shouldCopy,
+    open: !noOpen,
+    copy: !noCopy,
     allowWrite,
     noUpdate,
     forceUpdate,
