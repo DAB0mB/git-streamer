@@ -5,13 +5,15 @@ With Git Streamer you can start a video call, and share your screen / git projec
 <img align="center" alt="git-vide" src="https://user-images.githubusercontent.com/7648874/106060751-1f1e3d80-60fd-11eb-8a23-c418928ee157.png">
 <img align="center" alt="git-code" src="https://user-images.githubusercontent.com/7648874/106059610-a36fc100-60fb-11eb-819e-e269b4b76aa7.png">
 
-You can get started quickly using a CLI called `gits`.
+To further understand how Git Streamer works I recommend you to read: [An architectural overview for Web RTC: A protocol for implementing video conferencing](https://medium.com/@eytanmanor/an-architectural-overview-for-web-rtc-a-protocol-for-implementing-video-conferencing-e2a914628d0e).
 
-To install:
+## Getting Started
+
+To get started, install `gits` CLI:
 
     $ npm install -g @git-streamer/cli
 
-To start a new call:
+And create a new session:
 
     $ gits --copy --open --salt 100
 
@@ -31,13 +33,13 @@ For help, use the **`--help`** option.
 
 Git Streamer requires read/write access to project files. It will be watching over changes in your `.git` and project directories, and it will be streaming these changes to whoever is listening on the other side.
 
-If specified so, the participants of the call will have the ability to edit files directly from the hosted text editor; Git Streamer will be listening to these changes and will be merging them to your project. If the changes were forced outside of the scope of your project, they will be ignored.
+If specified, the participants of the call will have the ability to edit files directly from the hosted text editor; Git Streamer will be listening to these changes and will be merging them to your project. If the changes were forced outside of the scope of your project, they will be ignored.
 
 Git Streamer uses proxy servers as means to stream some changes (turn/stun, signaling server) and will not store any of your data unless explicitly given permission to do so.
 
-## Liability
+## Terms of Service
 
-**Use at your own risk!**. Git Streamer will give read/write access to people who are attending your call. Despite my efforts to make Git Streamer safe to use, you should bare in mind that it's in an early stage of development. I will take no responsibility in case of leak of information, hijack, Trojan, or any kind of malicious injection (see license).
+**Use at your own risk!**. Git Streamer will give read/write access to people who are attending your call. Despite my efforts to make Git Streamer safe to use, you should bare in mind that it's in an early stage of development. I will take no responsibility in case of leak of information, hijack, Trojan, or any kind of malicious injection.
 
 ## LICENSE
 
