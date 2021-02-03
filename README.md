@@ -5,7 +5,7 @@ With Git Streamer you can start a video call, and share your screen / git projec
 <img align="center" alt="git-vide" src="https://user-images.githubusercontent.com/7648874/106060751-1f1e3d80-60fd-11eb-8a23-c418928ee157.png">
 <img align="center" alt="git-code" src="https://user-images.githubusercontent.com/7648874/106059610-a36fc100-60fb-11eb-819e-e269b4b76aa7.png">
 
-To further understand how Git Streamer works I recommend you to read: [An architectural overview for Web RTC: A protocol for implementing video conferencing](https://medium.com/@eytanmanor/an-architectural-overview-for-web-rtc-a-protocol-for-implementing-video-conferencing-e2a914628d0e).
+To further understand how Git Streamer works I recommend you to read: [An architectural overview for Web RTC: A protocol for implementing video conferencing](https://bit.ly/3rjvuSR).
 
 ## Getting Started
 
