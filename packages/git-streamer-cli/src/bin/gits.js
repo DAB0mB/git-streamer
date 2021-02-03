@@ -107,7 +107,7 @@ const main = async () => {
         console.log('Checking for updates...');
       }, 2000);
 
-      const latestVersion = await execa('npm', ['show', '@git-streamer/agent', 'version'])
+      const latestVersion = await execa('npm', ['show', '@git-streamer/cli', 'version'])
         .then(cp => cp.stdout.split('\n')[0].trim());
 
       clearTimeout(checkingUpdatesTimeout);
@@ -118,7 +118,7 @@ const main = async () => {
 
       console.log(`Updating to v${latestVersion}...`);
 
-      await execa('npm', ['install', '-g', '--prefer-online', '@git-streamer/agent'], {
+      await execa('npm', ['install', '-g', '--prefer-online', '@git-streamer/cli'], {
         stdio: 'inherit',
       });
 
