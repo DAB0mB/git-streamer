@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { GitStreamer } from '@git-streamer/agent';
+import compareVersions from 'compare-versions';
 import { copy } from 'copy-paste';
 import execa from 'execa';
 import findRoot from 'find-root';
@@ -112,7 +113,7 @@ const main = async () => {
 
       clearTimeout(checkingUpdatesTimeout);
 
-      if (!forceUpdate && pack.version === latestVersion) {
+      if (!forceUpdate && compareVersions.compare(pack.version, latestVersion, '>=')) {
         break checkingUpdates;
       }
 
