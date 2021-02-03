@@ -109,7 +109,7 @@ const main = async () => {
 
       const latestVersion = await execa('npm', ['show', 'version', '@git-streamer/agent'])
         .then(cp => cp.stdout.split('\n')[0].trim());
-      
+
       clearTimeout(checkingUpdatesTimeout);
 
       if (!forceUpdate && pack.version === latestVersion) {
@@ -157,7 +157,7 @@ const main = async () => {
 
   const warmupTimeout = setTimeout(() => {
     console.log('Warming up lambda; please be patient.');
-  }, 2000);
+  }, 3000);
 
   let stopWatching;
   gits.startWatching({ allowWrite })
@@ -190,7 +190,13 @@ const main = async () => {
     shuttingDown = true;
 
     if (stopWatching) try {
+      const stopWatchingTimeout = setTimeout(() => {
+        console.log('Gracefully closing session; just a moment please.');
+      }, 1000);
+
       await stopWatching();
+
+      clearTimeout(stopWatchingTimeout);
 
       console.log('Session closed.');
     }
