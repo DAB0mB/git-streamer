@@ -5,13 +5,17 @@ Using a single command line you can start a new video call, and share your scree
 <img align="center" alt="git-vide" src="https://user-images.githubusercontent.com/7648874/106060751-1f1e3d80-60fd-11eb-8a23-c418928ee157.png">
 <img align="center" alt="git-code" src="https://user-images.githubusercontent.com/7648874/106059610-a36fc100-60fb-11eb-819e-e269b4b76aa7.png">
 
-To further understand how Git Streamer works I recommend you to read about [Web RTC - A protocol for implementing video conferencing](https://eytanmanor.medium.com/an-architectural-overview-for-web-rtc-a-protocol-for-implementing-video-conferencing-e2a914628d0e).
+Please note that Git Streamer is work in progress. If you have any feature requests, or encountered any issue(s), you're more then welcome to visit the [issues section](https://github.com/DAB0mB/git-streamer/issues) and submit your inqueries. To further understand how Git Streamer works I recommend you to read about [Web RTC - A protocol for implementing video conferencing](https://eytanmanor.medium.com/an-architectural-overview-for-web-rtc-a-protocol-for-implementing-video-conferencing-e2a914628d0e).
 
 ## Getting Started
 
 To get started, install `gits` CLI:
 
     $ npm install -g @git-streamer/cli
+
+Make sure you're at a directory with Git initialized:
+
+    $ cd some-git-project
 
 And create a new session:
 
