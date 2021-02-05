@@ -27,8 +27,8 @@ const argv = aliasArgv(process.argv.slice(2), {
 
 let {
   _: [input],
-  copy: noCopy = false,
-  open: noOpen = false,
+  nocopy: noCopy = false,
+  noopen: noOpen = false,
   salt: saltSize = 89,
   help: showHelp = false,
   allowwrite: allowWrite = false,
