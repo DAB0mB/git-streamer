@@ -3,6 +3,7 @@ import { createServer } from 'http';
 import fetch from 'node-fetch';
 import io from 'socket.io-client';
 
+import Turn from '../models/Turn';
 import Git from './cmd/Git';
 import config from './config';
 import { genToken, promisify } from './util';
@@ -32,7 +33,7 @@ class GitStreamer {
     }
   }
 
-  async startWatching({ allowWrite } = {}) {
+  async startWatching({ allowWrite, region } = {}) {
     if (typeof this.input != 'string') {
       throw Error('Cannot start recording! settings.input was not provided.');
     }
@@ -42,6 +43,10 @@ class GitStreamer {
     }
 
     this.state = GitStreamer.State.started;
+
+    const turn = await Turn.create({ region });
+
+    turn.checkIn();
 
     const { sessionId, agentToken } = await fetch(`${config.httpServer}/session`, {
       method: 'POST',
@@ -101,12 +106,12 @@ class GitStreamer {
     return {
       url: `${config.viewerUrl}/session/${sessionId}`,
       stop: async () => {
-        await this.stopWatching({ stopWatchingProject, server, sock });
+        await this.stopWatching({ stopWatchingProject, server, sock, turn });
       },
     };
   }
 
-  async stopWatching({ stopWatchingProject, server, sock }) {
+  async stopWatching({ stopWatchingProject, server, sock, turn }) {
     if (this.state === GitStreamer.State.stopped) {
       throw Error('It does not seem like the recorder was ever started. Did you forget to call GitStreamer.start()?');
     }
@@ -114,6 +119,7 @@ class GitStreamer {
     // Remains for legacy reasons, but can still be used in the future
     const errors = [];
 
+    turn.checkOut();
     await stopWatchingProject().then(() => null, e => errors.push(e));
     await promisify(server.close.bind(server))().then(() => null, e => errors.push(e));
 

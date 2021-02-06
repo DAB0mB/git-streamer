@@ -1,10 +1,5 @@
 import { Writable } from 'stream';
 
-export * from 'generic-utils';
-
-export * from './aws';
-export * from './io';
-
 export const aliasArgv = (argv, aliases) => {
   argv = new Set(argv);
   aliases = Object.entries(aliases);

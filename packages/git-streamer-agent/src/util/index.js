@@ -1,12 +1,17 @@
 import { nanoid } from 'nanoid';
-import { Writable } from 'stream';
 
 export * from 'generic-utils';
 export * from 'util';
 
+export * from './aws';
+export * from './io';
+
+const letterRunes = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+export const randomStr = (length = 13) => {
+  return Array.apply(null, { length }).map(() => letterRunes[(Math.random() * letterRunes.length) | 0]).join('');
+};
+
 export const genToken = (size = 11) => {
   return nanoid(size);
 };
-
-export const nullStdout = new Writable();
-nullStdout._write = () => {}; // noop

@@ -7,6 +7,7 @@ import execa from 'execa';
 import findRoot from 'find-root';
 import fs from 'fs-extra';
 import minimist from 'minimist';
+import fetch from 'node-fetch';
 import open from 'open';
 import path from 'path';
 import readline from 'readline';
@@ -14,7 +15,7 @@ import readline from 'readline';
 import pack from '../../package.json';
 import { isProd } from '../config';
 import help from '../help';
-import { nullStdout, aliasArgv } from '../util';
+import { nullStdout, aliasArgv, pingAwsRegions } from '../util';
 
 // minimist doesn't support dash cased args
 const argv = aliasArgv(process.argv.slice(2), {
@@ -157,14 +158,19 @@ const main = async () => {
   gits.changeSettings(config);
 
   const warmupTimeout = setTimeout(() => {
-    console.log('Warming up lambda; please be patient.');
+    console.log('Warming up; please be patient.');
   }, 3000);
 
-  let stopWatching;
-  gits.startWatching({ allowWrite })
-    .then(({ url, stop }) => {
-      clearTimeout(warmupTimeout);
+  const [region] = await Promise.all([
+    await pingAwsRegions(),
+    await fetch(`${config.httpServer}/ping`),
+  ]);
 
+  clearTimeout(warmupTimeout);
+
+  let stopWatching;
+  gits.startWatching({ allowWrite, region })
+    .then(({ url, stop }) => {
       console.log(`Session running at: ${url}`);
 
       if (config.copy) {
