@@ -44,7 +44,7 @@ class GitStreamer {
 
     this.state = GitStreamer.State.started;
 
-    const turn = await Turn.create({ region });
+    const turn = await Turn.create(region);
 
     turn.checkIn();
 
@@ -77,6 +77,7 @@ class GitStreamer {
         sessionId,
         agentToken,
         allowWrite,
+        region: turn.region,
         agentUrl: `http://localhost:${server.address().port}`,
       },
     });

@@ -160,7 +160,7 @@ const main = async () => {
     console.log('Warming up; please be patient.');
   }, 3000);
 
-  const [region] = await Promise.all([
+  const [{ name: region }] = await Promise.all([
     await pingAwsRegions(),
     await warmUpLambda(),
   ]);
