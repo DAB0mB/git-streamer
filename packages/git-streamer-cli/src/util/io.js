@@ -1,5 +1,3 @@
-import { Writable } from 'stream';
-
 export const aliasArgv = (argv, aliases) => {
   argv = new Set(argv);
   aliases = Object.entries(aliases);
@@ -18,6 +16,3 @@ export const aliasArgv = (argv, aliases) => {
 
   return [...argv];
 };
-
-export const nullStdout = new Writable();
-nullStdout._write = () => {}; // noop

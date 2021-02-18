@@ -3,7 +3,7 @@ import { createServer } from 'http';
 import fetch from 'node-fetch';
 import io from 'socket.io-client';
 
-import Turn from '../models/Turn';
+import Turn from './models/Turn';
 import Git from './cmd/Git';
 import config from './config';
 import { genToken, promisify } from './util';

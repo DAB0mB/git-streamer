@@ -7,7 +7,6 @@ import execa from 'execa';
 import findRoot from 'find-root';
 import fs from 'fs-extra';
 import minimist from 'minimist';
-import fetch from 'node-fetch';
 import open from 'open';
 import path from 'path';
 import readline from 'readline';
@@ -15,7 +14,7 @@ import readline from 'readline';
 import pack from '../../package.json';
 import { isProd } from '../config';
 import help from '../help';
-import { nullStdout, aliasArgv, pingAwsRegions } from '../util';
+import { nullStdout, aliasArgv, pingAwsRegions, warmUpLambda } from '../util';
 
 // minimist doesn't support dash cased args
 const argv = aliasArgv(process.argv.slice(2), {
@@ -163,7 +162,7 @@ const main = async () => {
 
   const [region] = await Promise.all([
     await pingAwsRegions(),
-    await fetch(`${config.httpServer}/ping`),
+    await warmUpLambda(),
   ]);
 
   clearTimeout(warmupTimeout);

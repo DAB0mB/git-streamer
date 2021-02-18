@@ -1,2 +1,2 @@
 export { default as GitStreamer } from './GitStreamer';
-export { default as Turn } from './Turn';
+export * as util from './util';

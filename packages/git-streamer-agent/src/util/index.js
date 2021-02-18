@@ -5,6 +5,7 @@ export * from 'util';
 
 export * from './aws';
 export * from './io';
+export * from './server';
 
 const letterRunes = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
