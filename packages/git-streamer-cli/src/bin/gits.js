@@ -14,7 +14,7 @@ import readline from 'readline';
 import pack from '../../package.json';
 import { isProd } from '../config';
 import help from '../help';
-import { nullStdout, aliasArgv, pingAwsRegions, warmUpLambda } from '../util';
+import { nullStdout, aliasArgv, pingAwsRegions, warmUpLambda, warmUpViewer } from '../util';
 
 // minimist doesn't support dash cased args
 const argv = aliasArgv(process.argv.slice(2), {
@@ -160,9 +160,10 @@ const main = async () => {
     console.log('Warming up; please be patient.');
   }, 3000);
 
-  const [{ name: region }] = await Promise.all([
+  const [[{ name: region }]] = await Promise.all([
     await pingAwsRegions(),
     await warmUpLambda(),
+    await warmUpViewer(),
   ]);
 
   clearTimeout(warmupTimeout);

@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 
 const regions = [
   'eu-west-1',
-  // TODO: Add more regions
+  'us-east-1',
 ];
 
 export const pingAwsRegions = async () => {
