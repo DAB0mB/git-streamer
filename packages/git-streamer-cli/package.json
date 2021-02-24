@@ -1,6 +1,6 @@
 {
   "name": "@git-streamer/cli",
-  "version": "0.0.0-alpha.5",
+  "version": "0.0.0-alpha.6",
   "bin": {
     "gits": "build/bin/gits.js"
   },
@@ -10,7 +10,7 @@
     "lint": "eslint --fix"
   },
   "dependencies": {
-    "@git-streamer/agent": "^0.0.0-alpha.5",
+    "@git-streamer/agent": "^0.0.0-alpha.6",
     "chalk": "^4.1.0",
     "compare-versions": "^3.6.0",
     "copy-paste": "^1.3.0",
