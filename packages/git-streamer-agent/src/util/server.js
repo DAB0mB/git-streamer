@@ -7,5 +7,5 @@ export const warmUpLambda = () => {
 };
 
 export const warmUpViewer = () => {
-  return fetch(`${config.viewerUrl}/ping`);
+  return fetch(`${config.viewerUrl}/api/ping`);
 };
