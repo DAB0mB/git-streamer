@@ -1,6 +1,6 @@
 {
   "name": "@git-streamer/agent",
-  "version": "0.0.0-alpha.7",
+  "version": "0.0.0-alpha.8",
   "main": "build/index.js",
   "scripts": {
     "prepublishOnly": "rm -rf build && yarn build",
