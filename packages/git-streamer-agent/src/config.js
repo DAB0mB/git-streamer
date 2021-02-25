@@ -34,8 +34,7 @@ Object.assign(config, {
   httpServer: process.env.HTTP_SERVER,
   wsServer: process.env.WS_SERVER,
   viewerUrl: process.env.VIEWER_URL,
-  gitsRegistryUrl: process.env.GITS_REGISTRY_URL,
-  turnCheckInMs: Number(process.env.TURN_CHECK_IN_MS) || 5 * 60 * 1000,
+  awsRegions: process.env.AWS_REGIONS.split(/ *, */),
 });
 
 module.exports = config;
